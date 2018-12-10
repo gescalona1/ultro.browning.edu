@@ -19,7 +19,7 @@ from home import urls as home_urls
 from accounts import urls as accounts_urls
 
 urlpatterns = [
-  path(r'admin/', admin.site.urls),
-  path(r'', include(home_urls)),
-  path(r'accounts/', include(accounts_urls))
+    path(r'admin/', admin.site.urls),
+    path(r'', include(home_urls)),
+    path(r'accounts/', include(accounts_urls))
 ]

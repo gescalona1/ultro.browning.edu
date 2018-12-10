@@ -4,16 +4,16 @@ from django.http import HttpResponse
 
 
 def index(request):
-  return HttpResponse("INDEX")
+    return HttpResponse("INDEX")
 
 
 def about(request):
-  return HttpResponse("ABOUT")
+    return HttpResponse("ABOUT")
 
 
 def contact(request):
-  return HttpResponse("Contact")
+    return HttpResponse("Contact")
 
 
 def donate(request):
-  return HttpResponse("DONATE")
+    return HttpResponse("DONATE")

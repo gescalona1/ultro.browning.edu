@@ -6,31 +6,31 @@ import datetime
 
 
 class MemberCreationForm(forms.ModelForm):
-  class Meta:
-    model = Member
-    fields = [
-      'username', 'first_name', 'last_name',
-      'email', 'date_of_birth', 'graduation_year',
-      'specialized', 'password'
-    ]
-    widgets = {
-      'email': forms.TextInput(attrs={
-        'style': 'text-transform:lowercase;'
-      }),
-      'password': forms.PasswordInput()
-    }
+    class Meta:
+        model = Member
+        fields = [
+            'username', 'first_name', 'last_name',
+            'email', 'date_of_birth', 'graduation_year',
+            'specialized', 'password'
+        ]
+        widgets = {
+            'email': forms.TextInput(attrs={
+                'style': 'text-transform:lowercase;'
+            }),
+            'password': forms.PasswordInput()
+        }
 
 
 class MemberLogForm(forms.ModelForm):
-  class Meta:
-    model = Member
-    fields = ['email', 'password']
-    widgets = {
-      'email': forms.TextInput(attrs={
-        'style': 'text-transform:lowercase;'
-      }),
-      'password': forms.PasswordInput()
-    }
+    class Meta:
+        model = Member
+        fields = ['email', 'password']
+        widgets = {
+            'email': forms.TextInput(attrs={
+                'style': 'text-transform:lowercase;'
+            }),
+            'password': forms.PasswordInput()
+        }
 
 
 """

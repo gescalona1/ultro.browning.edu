@@ -30,10 +30,14 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = ''.join(random.SystemRandom().choice(env('SECRET_KEY_CHOICES')) for i in range(50))
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
+
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+SECURE_SSL_REDIRECT = True
 
 ALLOWED_HOSTS = ['ultro.browning.edu', 'localhost']
 
@@ -41,49 +45,49 @@ ALLOWED_HOSTS = ['ultro.browning.edu', 'localhost']
 # Application definition
 
 INSTALLED_APPS = [
-  'django.contrib.admin',
-  'django.contrib.auth',
-  'django.contrib.contenttypes',
-  'django.contrib.sessions',
-  'django.contrib.messages',
-  'django.contrib.staticfiles',
-  'django_extensions',
-  'accounts.apps.AccountsConfig'
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'django_extensions',
+    'accounts.apps.AccountsConfig'
 
 ]
 
 MIDDLEWARE = [
-  'django.middleware.security.SecurityMiddleware',
-  'django.contrib.sessions.middleware.SessionMiddleware',
-  'django.middleware.common.CommonMiddleware',
-  'django.middleware.csrf.CsrfViewMiddleware',
-  'django.contrib.auth.middleware.AuthenticationMiddleware',
-  'django.contrib.messages.middleware.MessageMiddleware',
-  'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.security.SecurityMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
-  )
+)
 ROOT_URLCONF = 'ultrowebsite.urls'
 
 TEMPLATES = [
-  {
-    'BACKEND': 'django.template.backends.django.DjangoTemplates',
-    'DIRS': [
-      "static",
-      "templates"
-    ],
-    'APP_DIRS': True,
-    'OPTIONS': {
-        'context_processors': [
-            'django.template.context_processors.debug',
-            'django.template.context_processors.request',
-            'django.contrib.auth.context_processors.auth',
-            'django.contrib.messages.context_processors.messages',
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [
+            "static",
+            "templates"
         ],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
     },
-  },
 ]
 
 WSGI_APPLICATION = 'ultrowebsite.wsgi.application'
@@ -93,7 +97,7 @@ WSGI_APPLICATION = 'ultrowebsite.wsgi.application'
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
 DATABASES = {
-  'default': env.db('MYSQL_URL')
+    'default': env.db('MYSQL_URL')
 }
 
 
@@ -101,18 +105,18 @@ DATABASES = {
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
-  {
-    'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-  },
-  {
-    'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-  },
-  {
-    'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-  },
-  {
-    'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-  },
+    {
+        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+    },
 ]
 
 
