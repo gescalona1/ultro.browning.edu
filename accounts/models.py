@@ -60,6 +60,10 @@ class Member(AbstractBaseUser, PermissionsMixin):
     class Meta:
         verbose_name = _('user')
         verbose_name_plural = _('users')
+        permissions = (
+            ('can_edit_pages', 'Can edit pages'),
+            ('can_view_notebook', 'Can view notebook')
+        )
 
     @property
     def age(self):
@@ -86,6 +90,3 @@ class Member(AbstractBaseUser, PermissionsMixin):
         '''
         send_mail(subject, message, from_email, [self.email], **kwargs)
 
-
-class SuperAdmin(Member):
-    pass

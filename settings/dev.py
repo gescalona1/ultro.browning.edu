@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_extensions',
-    'accounts.apps.AccountsConfig'
+    'accounts'
 
 ]
 
@@ -133,3 +133,6 @@ USE_TZ = True
 
 STATIC_URL = os.path.join(BASE_DIR, "static/")
 AUTH_USER_MODEL = env('AUTH_USER_MODEL')
+LOGIN_URL = "accounts/login/"
+LOGIN_REDIRECT_URL = "accounts/notebook"
+LOGOUT_REDIRECT_URL = "index/"

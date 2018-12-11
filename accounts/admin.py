@@ -1,21 +1,45 @@
 from django.contrib import admin
+from django.contrib.auth import get_user_model
+from .forms import MemberCreationForm, MemberChangeForm
 from django.contrib.auth.admin import UserAdmin
-from .models import Member, SuperAdmin
-from .forms import MemberCreationForm
+
+#class MemberAdmin(admin.ModelAdmin):
+#    add_form = MemberCreationForm
+#    form = MemberCreationForm
+#    model = Member
+#    list_display = [
+#        'email',
+#        'username',
+#        'date_of_birth',
+#        'graduation_year',
+#        'specialized']
 
 
-class MemberAdmin(admin.ModelAdmin):
+class MemberAdmin(UserAdmin):
+    form = MemberChangeForm
     add_form = MemberCreationForm
-    form = MemberCreationForm
-    model = Member
     list_display = [
         'email',
         'username',
         'date_of_birth',
         'graduation_year',
-        'specialized']
+        'specialized'
+    ]
+    fieldsets = (
+        (None, {'fields': ('email', 'password')}),
+        ('Personal info', {'fields': ('date_of_birth', )}),
+        ('Permissions', {'fields': ('user_permissions', 'groups')}),
+    )
+    add_fieldsets = (
+        (None, {
+            'classes': ('wide',),
+            'fields': ('email', 'username', 'date_of_birth', 'graduation_year', 'specialized', 'password')}
+         ),
+    )
+    search_fields = ('email',)
+    ordering = ('email',)
+    filter_horizontal = ()
 
 
 # Register your models here.
-admin.site.register(Member, MemberAdmin)
-admin.site.register(SuperAdmin, MemberAdmin)
+admin.site.register(get_user_model(), MemberAdmin)
